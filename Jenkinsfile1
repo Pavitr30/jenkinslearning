@@ -1,18 +1,31 @@
-stage('Compile') {
-    steps {
-        bat 'javac Hello.java'
-    }
-}
+pipeline {
+    agent any
 
-stage('Run') {
-    steps {
-        bat 'java Hello'
-    }
-}
+    stages {
 
-stage('Test') {
-    steps {
-        echo 'Running tests...'
-        bat 'java Hello'
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+            }
+        }
+
+        stage('Compile') {
+            steps {
+                bat 'javac Hello.java'
+            }
+        }
+
+        stage('Run') {
+            steps {
+                bat 'java Hello'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                bat 'java Hello'
+            }
+        }
     }
 }
