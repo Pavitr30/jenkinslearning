@@ -3,17 +3,29 @@ pipeline {
 
     stages {
 
+        stage('Checkout') {
+            steps {
+                echo 'Checking out code...'
+            }
+        }
+
         stage('Compile') {
             steps {
-                bat 'javac Hello.java'
+                bat 'javac hello.java'
             }
         }
 
         stage('Run') {
             steps {
-                bat 'java Hello'
+                bat 'java hello'
             }
         }
 
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+                bat 'java hello'
+            }
+        }
     }
 }
